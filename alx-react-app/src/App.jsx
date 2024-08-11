@@ -1,3 +1,9 @@
+// Import the new components
+import Header from './components/Header';
+import MainContent from './components/MainContent';
+import Footer from './components/Footer';
+
+// Import existing components and assets
 import WelcomeMessage from './components/WelcomeMessage';
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
@@ -9,7 +15,11 @@ function App() {
 
   return (
     <>
-      {/* Include the WelcomeMessage component here */}
+      {/* Include the new components */}
+      <Header />
+      <MainContent />
+
+      {/* Include the WelcomeMessage component */}
       <WelcomeMessage />
       
       <div>
@@ -20,7 +30,9 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      
       <h1>Vite + React</h1>
+      
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -29,9 +41,13 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
+      
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      
+      {/* Include the Footer component */}
+      <Footer />
     </>
   );
 }
