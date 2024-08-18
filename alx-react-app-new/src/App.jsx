@@ -2,10 +2,11 @@
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
+import Counter from './components/Counter'; // <-- Add this line
 
 // Import existing components and assets
 import WelcomeMessage from './components/WelcomeMessage';
-import UserProfile from './components/UserProfile'; // <-- Add this line
+import UserProfile from './components/UserProfile';
 import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
@@ -26,6 +27,9 @@ function App() {
       {/* Include the WelcomeMessage component */}
       <WelcomeMessage />
       
+      {/* Include the Counter component */}
+      <Counter />
+
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
