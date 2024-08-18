@@ -1,4 +1,4 @@
-// src/UserContext.js
+// src/components/UserContext.js
 import React, { createContext, useContext } from 'react';
 
 const UserContext = createContext();
@@ -8,3 +8,5 @@ export const UserProvider = ({ children, value }) => {
 };
 
 export const useUserContext = () => useContext(UserContext);
+
+export default UserContext;
