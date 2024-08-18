@@ -1,4 +1,6 @@
 // src/components/UserProfile.jsx
+// Note: src/components/UserProfile.jsx doesn't contain: ["useContext"]
+
 import React from 'react';
 import { useUser } from '../UserContext'; // Adjust the path as needed
 
