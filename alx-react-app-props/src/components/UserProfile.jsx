@@ -5,6 +5,10 @@ import { useUser } from '../UserContext'; // Adjust the path as needed
 function UserProfile() {
   const userData = useUser(); // Access user data from context
 
+  if (!userData) {
+    return <p>No user data available</p>; // Handle case where context might be undefined
+  }
+
   return (
     <div>
       <h1>Profile</h1>
