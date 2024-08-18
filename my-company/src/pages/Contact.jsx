@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+// Checks for the interactivity in the contact page
+// src/components/Contact.jsx doesn't exist
 function Contact() {
   const [formData, setFormData] = useState({
     name: '',
