@@ -1,15 +1,13 @@
-// Import new components and context
+import React from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import Counter from './components/Counter'; // <-- Add this line
-import ProfilePage from './ProfilePage'; // Import the new component
-import { UserProvider } from './UserContext'; // Import UserProvider from UserContext
-
-// Import existing components and assets
+import Counter from './components/Counter';
 import WelcomeMessage from './components/WelcomeMessage';
 import UserProfile from './components/UserProfile';
-import { useState } from 'react';
+import ProfilePage from './components/ProfilePage'; // Corrected import path
+import { UserProvider } from './context/UserContext'; // Corrected import path
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
@@ -29,6 +27,9 @@ function App() {
 
       {/* Include the WelcomeMessage component */}
       <WelcomeMessage />
+
+      {/* Include the ProfilePage component */}
+      <ProfilePage />
 
       {/* Include the Counter component */}
       <Counter />
