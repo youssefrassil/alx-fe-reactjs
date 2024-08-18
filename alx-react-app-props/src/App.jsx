@@ -7,7 +7,7 @@ import Counter from './components/Counter';
 import WelcomeMessage from './components/WelcomeMessage';
 import UserProfile from './components/UserProfile';
 import ProfilePage from './components/ProfilePage'; // Corrected import path
-import { UserProvider } from './context/UserContext'; // Corrected import path
+import { UserContext } from './context/UserContext'; // Import UserContext
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
@@ -18,7 +18,7 @@ function App() {
   const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
 
   return (
-    <UserProvider value={userData}>
+    <UserContext.Provider value={userData}>
       <Header />
       <MainContent />
 
@@ -60,7 +60,7 @@ function App() {
 
       {/* Include the Footer component */}
       <Footer />
-    </UserProvider>
+    </UserContext.Provider>
   );
 }
 
