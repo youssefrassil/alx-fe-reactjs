@@ -1,4 +1,5 @@
-// Import the new components
+// src/App.jsx
+import React, { useState } from 'react';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
@@ -7,7 +8,6 @@ import Counter from './components/Counter'; // <-- Add this line
 // Import existing components and assets
 import WelcomeMessage from './components/WelcomeMessage';
 import UserProfile from './components/UserProfile';
-import { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
