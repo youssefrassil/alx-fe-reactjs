@@ -25,6 +25,7 @@ import Navbar from './components/Navbar';
 // Import Recipe Sharing Application components
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
+import RecipeDetails from './components/RecipeDetails'; // Import RecipeDetails
 
 function App() {
   const [count, setCount] = useState(0);
@@ -39,6 +40,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
+          {/* Add Recipe Sharing Application Routes */}
+          <Route path="/recipes" element={<RecipeList />} />
+          <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
         </Routes>
         <Header />
         <MainContent />
@@ -70,7 +74,6 @@ function App() {
         {/* Recipe Sharing Application Components */}
         <h1>Recipe Sharing Application</h1>
         <AddRecipeForm />
-        <RecipeList />
         
         <Footer />
       </Router>
