@@ -27,6 +27,8 @@ import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
 import SearchBar from './components/SearchBar'; // Import SearchBar
+import FavoritesList from './components/FavoritesList'; // Import FavoritesList
+import RecommendationsList from './components/RecommendationsList'; // Import RecommendationsList
 
 function App() {
   const [count, setCount] = useState(0);
@@ -76,6 +78,9 @@ function App() {
         <h1>Recipe Sharing Application</h1>
         <SearchBar /> {/* Add SearchBar component */}
         <AddRecipeForm /> {/* Add AddRecipeForm component */}
+        <RecipeList /> {/* Add RecipeList component */}
+        <FavoritesList /> {/* Add FavoritesList component */}
+        <RecommendationsList /> {/* Add RecommendationsList component */}
         
         <Footer />
       </Router>
