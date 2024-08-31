@@ -24,6 +24,7 @@ import Navbar from './components/Navbar';
 // Import components for Recipe Sharing Application
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
+import RecipeDetails from './components/RecipeDetails';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -34,17 +35,29 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          {/* Main Pages Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
+
+          {/* Recipe Sharing Application Routes */}
+          <Route path="/recipes" element={<>
+            <AddRecipeForm />
+            <RecipeList />
+          </>} />
+          <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
         </Routes>
+
+        {/* Other Components */}
         <Header />
         <MainContent />
         <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
         <WelcomeMessage />
         <Counter />
         <ProfilePage />
+
+        {/* Logos and Counters */}
         <div>
           <a href="https://vitejs.dev" target="_blank">
             <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -65,12 +78,8 @@ function App() {
         <p className="read-the-docs">
           Click on the Vite and React logos to learn more
         </p>
-        <Footer />
 
-        {/* Recipe Sharing Application Components */}
-        <h1>Recipe Sharing Application</h1>
-        <AddRecipeForm />
-        <RecipeList />
+        <Footer />
       </Router>
     </UserContext.Provider>
   );
