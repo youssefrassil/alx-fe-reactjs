@@ -17,9 +17,13 @@ import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
-import Contact from './components/Contact'; // Update this line
+import Contact from './components/Contact';
 // Import Navbar component
 import Navbar from './components/Navbar';
+
+// Import components for Recipe Sharing Application
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -62,6 +66,11 @@ function App() {
           Click on the Vite and React logos to learn more
         </p>
         <Footer />
+
+        {/* Recipe Sharing Application Components */}
+        <h1>Recipe Sharing Application</h1>
+        <AddRecipeForm />
+        <RecipeList />
       </Router>
     </UserContext.Provider>
   );
