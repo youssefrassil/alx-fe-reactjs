@@ -23,6 +23,8 @@ import Navbar from './components/Navbar';
 
 // Import components for Recipe Sharing Application
 import RecipeList from './components/RecipeList';
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
 import SearchBar from './components/SearchBar';
@@ -43,11 +45,19 @@ function App() {
           <Route path="/contact" element={<Contact />} />
 
           {/* Recipe Sharing Application Routes */}
-          <Route path="/recipes" element={<>
-            <SearchBar />
-            <AddRecipeForm />
-            <RecipeList />
-          </>} />
+          <Route path="/recipes" element={
+            <div>
+              <SearchBar />
+              <AddRecipeForm />
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <RecipeList />
+                <div>
+                  <FavoritesList />
+                  <RecommendationsList />
+                </div>
+              </div>
+            </div>
+          } />
           <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
         </Routes>
 
