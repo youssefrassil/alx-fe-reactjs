@@ -1,7 +1,10 @@
 // src/components/ProtectedRoute.jsx
 import { Navigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth'; // Import your custom hook
 
-function ProtectedRoute({ element, isAuthenticated }) {
+function ProtectedRoute({ element }) {
+  const isAuthenticated = useAuth();
+
   return isAuthenticated ? element : <Navigate to="/" />;
 }
 
