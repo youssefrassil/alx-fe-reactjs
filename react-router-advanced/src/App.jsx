@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -48,6 +47,9 @@ import ProfileSettings from './components/ProfileSettings';
 
 // Import ProtectedRoute component
 import ProtectedRoute from './components/ProtectedRoute';
+
+// Import Post component
+import Post from './components/Post';
 
 const queryClient = new QueryClient(); // Create an instance of QueryClient
 
@@ -119,6 +121,9 @@ function App() {
 
             {/* Nested Routes for ProfilePage */}
             <Route path="/profile-page/*" element={<ProfilePage />} />
+
+            {/* Route for Post component */}
+            <Route path="/post/:id" element={<Post />} />
 
             {/* 404 Not Found */}
             <Route path="*" element={<NotFound />} />
