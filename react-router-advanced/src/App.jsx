@@ -51,6 +51,9 @@ import ProtectedRoute from './components/ProtectedRoute';
 // Import Post component
 import Post from './components/Post';
 
+// Import BlogPost component
+import BlogPost from './components/BlogPost';
+
 const queryClient = new QueryClient(); // Create an instance of QueryClient
 
 function App() {
@@ -124,6 +127,9 @@ function App() {
 
             {/* Route for Post component */}
             <Route path="/post/:id" element={<Post />} />
+
+            {/* Route for BlogPost component */}
+            <Route path="/blog/:id" element={<BlogPost />} />
 
             {/* 404 Not Found */}
             <Route path="*" element={<NotFound />} />
