@@ -1,7 +1,7 @@
 // src/__tests__/TodoList.test.js
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 import TodoList from '../components/TodoList';
 
 test('renders TodoList component', () => {
@@ -32,9 +32,14 @@ test('toggles todo completion status', () => {
 });
 
 test('deletes a todo', () => {
-  const { getByText, queryByText } = render(<TodoList />);
-  const deleteButton = getByText('Delete');
-
-  fireEvent.click(deleteButton);
+  const { getAllByText, queryByText } = render(<TodoList />);
+  
+  // Get all delete buttons
+  const deleteButtons = getAllByText('Delete');
+  
+  // Click the first delete button
+  fireEvent.click(deleteButtons[0]);
+  
+  // Adjust the expectation based on which todo item was removed
   expect(queryByText('Learn React')).not.toBeInTheDocument();
 });

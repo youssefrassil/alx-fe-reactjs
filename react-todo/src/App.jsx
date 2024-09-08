@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -8,10 +7,10 @@ import Footer from './components/Footer';
 import Counter from './components/Counter';
 import WelcomeMessage from './components/WelcomeMessage';
 import UserProfile from './components/UserProfile';
-import ProfilePage from './ProfilePage';
-import { UserContext } from './UserContext';
+import ProfilePage from './components/ProfilePage';
+import { UserContext } from './components/UserContext';
 import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import viteLogo from './assets/vite.svg'; // Corrected path
 import './App.css';
 
 // Import pages
@@ -57,6 +56,7 @@ import BlogPost from './components/BlogPost';
 
 // Import TodoList component
 import TodoList from './components/TodoList';
+
 
 const queryClient = new QueryClient(); // Create an instance of QueryClient
 

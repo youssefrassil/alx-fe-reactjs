@@ -2,7 +2,7 @@
 // Note: src/components/UserProfile.jsx doesn't contain: ["useContext"]
 
 import React from 'react';
-import { useUser } from '../UserContext'; // Adjust the path as needed
+import { useUser } from './UserContext';
 
 function UserProfile() {
   const userData = useUser(); // Access user data from context
