@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { UserContext } from '../src/UserContext';
+import { UserContext } from './components/UserContext'; // Ensure this path is correct
 
 // Mock user data
 const userData = { name: "Jane Doe", email: "jane.doe@example.com" };

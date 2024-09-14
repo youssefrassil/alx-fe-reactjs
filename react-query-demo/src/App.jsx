@@ -1,7 +1,7 @@
 // src/App.jsx
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from 'react-query'; // Import from react-query
+import { QueryClient, QueryClientProvider } from 'react-query';
 import Header from './components/Header';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
@@ -18,7 +18,8 @@ import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
-import Contact from './components/Contact';
+import Contact from './pages/Contact';
+import NotFound from './components/NotFound';
 
 // Import Navbar component
 import Navbar from './components/Navbar';
@@ -40,11 +41,20 @@ import FormikForm from './components/FormikForm';
 // Import the PostsComponent
 import PostsComponent from './components/PostsComponent';
 
+// Import Profile components
+import Profile from './components/Profile';
+import ProfileDetails from './components/ProfileDetails';
+import ProfileSettings from './components/ProfileSettings';
+
+// Import ProtectedRoute component
+import ProtectedRoute from './components/ProtectedRoute';
+
 const queryClient = new QueryClient(); // Create an instance of QueryClient
 
 function App() {
   const [count, setCount] = useState(0);
   const userData = { name: "Jane Doe", email: "jane.doe@example.com" };
+  const isAuthenticated = false; // Simulate authentication status
 
   return (
     <QueryClientProvider client={queryClient}> {/* Wrap your app in QueryClientProvider */}
@@ -91,7 +101,27 @@ function App() {
             } />
 
             {/* Route for PostsComponent */}
-            <Route path="/posts" element={<PostsComponent />} /> {/* Add a route for PostsComponent */}
+            <Route path="/posts" element={<PostsComponent />} />
+
+            {/* Nested Profile Routes */}
+            <Route 
+              path="/profile/*" 
+              element={
+                <ProtectedRoute 
+                  element={<Profile />}
+                  isAuthenticated={isAuthenticated}
+                />
+              }
+            >
+              <Route path="details" element={<ProfileDetails />} />
+              <Route path="settings" element={<ProfileSettings />} />
+            </Route>
+
+            {/* Nested Routes for ProfilePage */}
+            <Route path="/profile-page/*" element={<ProfilePage />} />
+
+            {/* 404 Not Found */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
 
           {/* Other Components */}
@@ -100,7 +130,6 @@ function App() {
           <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
           <WelcomeMessage />
           <Counter />
-          <ProfilePage />
 
           {/* Logos and Counters */}
           <div>
