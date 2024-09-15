@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import HomePage from './components/HomePage'
 
 export default function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+      {/* HomePage component */}
+      <div className="App">
+        <HomePage />
+      </div>
+
       {/* Original content with logos and counter */}
       <div>
         <a href="https://vitejs.dev" target="_blank">
