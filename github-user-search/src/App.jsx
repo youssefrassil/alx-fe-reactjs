@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import SearchInput from './components/SearchInput'; // Import SearchInput component
+import Search from './components/Search'; // Import Search component
 
 const App = () => {
   const [count, setCount] = useState(0);
@@ -15,6 +16,7 @@ const App = () => {
       </header>
       <main>
         <SearchInput /> {/* SearchInput component */}
+        <Search /> {/* Search component */}
       </main>
 
       {/* Vite + React Section */}
