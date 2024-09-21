@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
+import SearchInput from './components/SearchInput'; // Import SearchInput component
 
 const App = () => {
   const [count, setCount] = useState(0);
@@ -11,8 +12,10 @@ const App = () => {
       {/* GitHub User Search Section */}
       <header>
         <h1>GitHub User Search</h1>
-        {/* Components for search input and displaying results will go here */}
       </header>
+      <main>
+        <SearchInput /> {/* SearchInput component */}
+      </main>
 
       {/* Vite + React Section */}
       <main>
