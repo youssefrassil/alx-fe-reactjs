@@ -16,7 +16,7 @@ export const fetchUserData = async (username, location = '', minRepos = '') => {
     if (minRepos) {
       query += `+repos:>=${minRepos}`;
     }
-    console.log(`Calling API: ${BASE_URL}${query}`);
+    
 
     // Ensure that the expected URL structure is being followed
     const response = await axios.get(`${BASE_URL}${query}`);
