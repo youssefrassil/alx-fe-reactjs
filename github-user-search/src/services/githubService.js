@@ -17,14 +17,22 @@ export const fetchUserData = async (username, location = '', minRepos = '') => {
       query += `+repos:>=${minRepos}`;
     }
 
-    // Call GitHub's search API with the query
+    // Ensure that the expected URL structure is being followed
     const response = await axios.get(`${BASE_URL}/search/users?${query}`);
+    
+    // Log the full URL to check correctness
+    console.log(`Calling API: ${BASE_URL}/search/users?${query}`);
+    
     return response.data.items;  // GitHub returns results in `items`
   } catch (error) {
     console.error('Error fetching user data:', error);
     throw error;
   }
 };
+
+// Optional: API Key for higher rate limits
 const GITHUB_API_KEY = process.env.REACT_APP_GITHUB_API_KEY;
 
-axios.defaults.headers.common['Authorization'] = `Bearer ${GITHUB_API_KEY}`;
+if (GITHUB_API_KEY) {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${GITHUB_API_KEY}`;
+}
