@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { fetchUserData } from '../services/githubService';
 
 const Search = () => {
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('youssefrassil');
   const [location, setLocation] = useState('');
   const [minRepos, setMinRepos] = useState('');
   const [results, setResults] = useState([]);
