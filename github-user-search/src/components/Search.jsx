@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { fetchAdvancedUserData } from '../services/githubService';
+import { fetchUserData } from '../services/githubService';
 
 const Search = () => {
   const [username, setUsername] = useState('');
@@ -7,77 +7,60 @@ const Search = () => {
   const [minRepos, setMinRepos] = useState('');
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
 
   const handleSearch = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
-    setUsers([]);
-
-    const query = {
-      username,
-      location,
-      minRepos
-    };
+    setError(null);
 
     try {
-      const data = await fetchAdvancedUserData(query);
-      setUsers(data.items);
+      const data = await fetchUserData(username, location, minRepos);
+      setUsers(data.items); // `items` contains the list of users
     } catch (err) {
-      setError("Something went wrong with the search");
+      setError('Looks like we can’t find the user');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">GitHub User Search</h1>
-      <form onSubmit={handleSearch} className="grid grid-cols-1 gap-4 md:grid-cols-3">
+    <div className="search-container">
+      <form onSubmit={handleSearch}>
         <input
           type="text"
+          placeholder="GitHub Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-          className="border p-2 rounded"
         />
         <input
           type="text"
+          placeholder="Location"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
-          placeholder="Location"
-          className="border p-2 rounded"
         />
         <input
           type="number"
+          placeholder="Minimum Repos"
           value={minRepos}
           onChange={(e) => setMinRepos(e.target.value)}
-          placeholder="Min Repositories"
-          className="border p-2 rounded"
         />
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">Search</button>
+        <button type="submit">Search</button>
       </form>
 
-      {loading && <p className="mt-4">Loading...</p>}
-      {error && <p className="mt-4 text-red-500">{error}</p>}
-
-      <div className="mt-8">
-        {users && users.length > 0 && (
-          <ul>
-            {users.map((user) => (
-              <li key={user.id} className="mb-4 p-4 border rounded">
-                <img src={user.avatar_url} alt={user.login} className="w-16 h-16 rounded-full" />
-                <h3 className="text-xl font-bold">{user.login}</h3>
-                <p>Location: {user.location || 'N/A'}</p>
-                <p>Public Repositories: {user.public_repos}</p>
-                <a href={user.html_url} className="text-blue-500" target="_blank" rel="noopener noreferrer">
-                  View Profile
-                </a>
-              </li>
-            ))}
-          </ul>
-        )}
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      
+      <div className="user-list">
+        {users.map((user) => (
+          <div key={user.id}>
+            <img src={user.avatar_url} alt={user.login} />
+            <p>{user.login}</p>
+            <a href={user.html_url} target="_blank" rel="noopener noreferrer">
+              View Profile
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );
