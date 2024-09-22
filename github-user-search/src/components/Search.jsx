@@ -5,31 +5,30 @@ const Search = () => {
   const [username, setUsername] = useState('');
   const [location, setLocation] = useState('');
   const [minRepos, setMinRepos] = useState('');
-  const [users, setUsers] = useState([]);
+  const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
 
   const handleSearch = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(null);
-
+    setError('');
     try {
-      const data = await fetchUserData(username, location, minRepos);
-      setUsers(data.items); // `items` contains the list of users
+      const users = await fetchUserData(username, location, minRepos);
+      setResults(users);
     } catch (err) {
-      setError('Looks like we can’t find the user');
+      setError('Failed to fetch users');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="search-container">
+    <div>
       <form onSubmit={handleSearch}>
         <input
           type="text"
-          placeholder="GitHub Username"
+          placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -41,7 +40,7 @@ const Search = () => {
         />
         <input
           type="number"
-          placeholder="Minimum Repos"
+          placeholder="Min Repos"
           value={minRepos}
           onChange={(e) => setMinRepos(e.target.value)}
         />
@@ -50,18 +49,18 @@ const Search = () => {
 
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      
-      <div className="user-list">
-        {users.map((user) => (
-          <div key={user.id}>
-            <img src={user.avatar_url} alt={user.login} />
-            <p>{user.login}</p>
-            <a href={user.html_url} target="_blank" rel="noopener noreferrer">
-              View Profile
-            </a>
-          </div>
-        ))}
-      </div>
+      {results.length > 0 && (
+        <ul>
+          {results.map((user) => (
+            <li key={user.id}>
+              <img src={user.avatar_url} alt={user.login} width="50" />
+              <a href={user.html_url} target="_blank" rel="noreferrer">
+                {user.login}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
