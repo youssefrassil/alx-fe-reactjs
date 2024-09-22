@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 // Base URL for GitHub API
-const BASE_URL = 'https://api.github.com'; 
+const BASE_URL = 'https://api.github.com/search/users?q'; 
 
 // Function to fetch users from GitHub's search API
 export const fetchUserData = async (username, location = '', minRepos = '') => {
   try {
     // Construct query
-    let query = `?q=${username}`;
+    let query = `=${username}`;
 
     if (location) {
       query += `+location:${location}`;
@@ -16,10 +16,10 @@ export const fetchUserData = async (username, location = '', minRepos = '') => {
     if (minRepos) {
       query += `+repos:>=${minRepos}`;
     }
-    console.log(`Calling API: ${BASE_URL}/search/users${query}`);
+    console.log(`Calling API: ${BASE_URL}${query}`);
 
     // Ensure that the expected URL structure is being followed
-    const response = await axios.get(`${BASE_URL}/search/users${query}`);
+    const response = await axios.get(`${BASE_URL}${query}`);
     
     // Log the full URL to check correctness
     
