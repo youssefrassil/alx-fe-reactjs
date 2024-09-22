@@ -31,7 +31,7 @@ export const fetchUserData = async (username, location = '', minRepos = '') => {
 };
 
 // Optional: API Key for higher rate limits
-const GITHUB_API_KEY = process.env.REACT_APP_GITHUB_API_KEY;
+const GITHUB_API_KEY = import.meta.env.VITE_GITHUB_API_KEY;
 
 if (GITHUB_API_KEY) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${GITHUB_API_KEY}`;
