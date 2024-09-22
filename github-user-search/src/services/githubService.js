@@ -1,31 +1,30 @@
 import axios from 'axios';
 
-// Base URL for the GitHub API
+// Base URL for GitHub API
 const BASE_URL = 'https://api.github.com';
 
-// Function to fetch user data from GitHub's search API
+// Function to fetch users from GitHub's search API
 export const fetchUserData = async (username, location = '', minRepos = '') => {
   try {
-    // Building the query string
+    // Construct query
     let query = `q=${username}`;
 
-    // Add location to query if specified
     if (location) {
       query += `+location:${location}`;
     }
 
-    // Add repository count filter to query if specified
     if (minRepos) {
       query += `+repos:>=${minRepos}`;
     }
 
-    // Complete API URL
+    // Call GitHub's search API with the query
     const response = await axios.get(`${BASE_URL}/search/users?${query}`);
-
-    // Return the user data
-    return response.data.items;
+    return response.data.items;  // GitHub returns results in `items`
   } catch (error) {
     console.error('Error fetching user data:', error);
-    throw new Error('Failed to fetch GitHub users');
+    throw error;
   }
 };
+const GITHUB_API_KEY = process.env.REACT_APP_GITHUB_API_KEY;
+
+axios.defaults.headers.common['Authorization'] = `Bearer ${GITHUB_API_KEY}`;
